@@ -1,0 +1,19 @@
+@page "{id:int}"
+@model AccessApp.Pages.Films.EditModel
+@{
+    ViewData["Title"] = "Edit Film";
+}
+
+<div class="page-header">
+    <h1>Edit Film</h1>
+    <a href="/Films" class="btn">← Back</a>
+</div>
+
+<form method="post" class="gh-form">
+    <input type="hidden" asp-for="FilmId" />
+    <div class="gh-form-group">
+        <label asp-for="FilmTitle">Film Title</label>
+        <input asp-for="FilmTitle" required maxlength="50" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>

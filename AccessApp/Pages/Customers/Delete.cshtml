@@ -1,0 +1,20 @@
+@page "{id:int}"
+@model AccessApp.Pages.Customers.DeleteModel
+@{
+    ViewData["Title"] = "Delete Customer";
+}
+
+<div class="page-header">
+    <h1>Delete Customer</h1>
+    <a href="/Customers" class="btn">← Back</a>
+</div>
+
+<div class="alert alert-danger">
+    Are you sure you want to delete <strong>@Model.CustName</strong>?
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="CustId" />
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="/Customers" class="btn">Cancel</a>
+</form>

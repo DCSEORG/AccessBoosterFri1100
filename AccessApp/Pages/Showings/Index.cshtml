@@ -1,0 +1,40 @@
+@page
+@model AccessApp.Pages.Showings.IndexModel
+@{
+    ViewData["Title"] = "Showings";
+}
+
+<div class="page-header">
+    <h1>Showings</h1>
+    <a href="/Showings/Create" class="btn btn-primary">+ Add Showing</a>
+</div>
+
+<div class="gh-table-wrap">
+    <table class="gh-table">
+        <thead>
+            <tr>
+                <th>Film</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Seats Left</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model.Showings)
+            {
+                var badgeClass = s.SeatsLeft == 0 ? "badge-red" : s.SeatsLeft <= 10 ? "badge-yellow" : "badge-green";
+                <tr>
+                    <td>@s.FilmTitle</td>
+                    <td>@s.ShowingDate.ToString("ddd dd MMM yyyy")</td>
+                    <td>@s.ShowingTime.ToString(@"hh\:mm")</td>
+                    <td><span class="badge @badgeClass">@s.SeatsLeft / 50</span></td>
+                    <td style="white-space:nowrap; text-align:right;">
+                        <a href="/Showings/Edit/@s.ShowingId" class="btn btn-sm">Edit</a>
+                        <a href="/Showings/Delete/@s.ShowingId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

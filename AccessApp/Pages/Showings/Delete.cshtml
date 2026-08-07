@@ -1,0 +1,21 @@
+@page "{id:int}"
+@model AccessApp.Pages.Showings.DeleteModel
+@{
+    ViewData["Title"] = "Delete Showing";
+}
+
+<div class="page-header">
+    <h1>Delete Showing</h1>
+    <a href="/Showings" class="btn">← Back</a>
+</div>
+
+<div class="alert alert-danger">
+    Are you sure you want to delete the showing of <strong>@Model.FilmTitle</strong>
+    on <strong>@Model.ShowingDate.ToString("ddd dd MMM yyyy")</strong> at <strong>@Model.ShowingTime.ToString(@"hh\:mm")</strong>?
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="ShowingId" />
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="/Showings" class="btn">Cancel</a>
+</form>

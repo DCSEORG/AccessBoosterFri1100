@@ -1,0 +1,71 @@
+@page
+@model AccessApp.Pages.Bookings.CreateModel
+@{
+    ViewData["Title"] = "Make Booking";
+}
+
+<div class="page-header">
+    <h1>Make a Booking</h1>
+    <a href="/Bookings" class="btn">← Back</a>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">@Model.ErrorMessage</div>
+}
+
+<form method="post" class="gh-form">
+    <div class="gh-form-group">
+        <label asp-for="ShowingId">Showing</label>
+        <select asp-for="ShowingId" id="selShowing" required>
+            <option value="">— select a showing —</option>
+            @foreach (var s in Model.Showings)
+            {
+                var label = $"{s.FilmTitle}  |  {s.ShowingDate:ddd dd MMM yyyy}  {s.ShowingTime:hh\\:mm}  |  {s.SeatsLeft} seats left";
+                if (s.SeatsLeft == 0)
+                {
+                    <option value="@s.ShowingId" disabled selected="@(Model.ShowingId == s.ShowingId)">@label</option>
+                }
+                else
+                {
+                    <option value="@s.ShowingId" selected="@(Model.ShowingId == s.ShowingId)">@label</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="gh-form-group">
+        <label asp-for="CustId">Customer</label>
+        <select asp-for="CustId" asp-items="Model.CustomerOptions" required>
+            <option value="">— select a customer —</option>
+        </select>
+    </div>
+    <div class="gh-form-group">
+        <label asp-for="Seats">Number of Seats</label>
+        <input asp-for="Seats" type="number" min="1" max="50" required />
+    </div>
+    <div id="seats-info" style="margin-bottom:16px; color:var(--color-fg-muted); font-size:13px;"></div>
+    <button type="submit" class="btn btn-primary">Confirm Booking</button>
+</form>
+
+@section Scripts {
+<script>
+(function () {
+    var availability = {
+        @foreach (var s in Model.Showings)
+        {
+            @: @s.ShowingId: @s.SeatsLeft,
+        }
+    };
+    var sel = document.getElementById('selShowing');
+    var info = document.getElementById('seats-info');
+    sel.addEventListener('change', function () {
+        var v = parseInt(sel.value);
+        if (!isNaN(v) && availability[v] !== undefined) {
+            info.textContent = availability[v] + ' seat(s) available for this showing.';
+        } else {
+            info.textContent = '';
+        }
+    });
+})();
+</script>
+}

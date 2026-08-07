@@ -1,0 +1,48 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="page-header">
+    <h1>🎬 Cinema Booking System</h1>
+</div>
+
+<p style="color:var(--color-fg-muted); margin-bottom:24px;">
+    Modernised from Microsoft Access. Manage films, showings, customers and bookings below.
+</p>
+
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:16px;">
+    <a href="/Films" class="dash-card">
+        <div class="dash-icon">🎞️</div>
+        <div class="dash-label">Films</div>
+        <div class="dash-sub">Manage the film catalogue</div>
+    </a>
+    <a href="/Showings" class="dash-card">
+        <div class="dash-icon">📅</div>
+        <div class="dash-label">Showings</div>
+        <div class="dash-sub">Schedule and view showings</div>
+    </a>
+    <a href="/Customers" class="dash-card">
+        <div class="dash-icon">👥</div>
+        <div class="dash-label">Customers</div>
+        <div class="dash-sub">Manage customer records</div>
+    </a>
+    <a href="/Bookings" class="dash-card">
+        <div class="dash-icon">🎟️</div>
+        <div class="dash-label">Bookings</div>
+        <div class="dash-sub">Make and view bookings</div>
+    </a>
+</div>
+
+<style>
+.dash-card {
+    display:block; padding:20px; border:1px solid var(--color-border-default);
+    border-radius:8px; background:var(--color-canvas-subtle);
+    text-decoration:none; transition:border-color .15s, background .15s;
+}
+.dash-card:hover { border-color:var(--color-accent-fg); background:var(--color-canvas-inset); text-decoration:none; }
+.dash-icon { font-size:28px; margin-bottom:8px; }
+.dash-label { font-weight:600; font-size:16px; color:var(--color-fg-default); }
+.dash-sub { color:var(--color-fg-muted); font-size:13px; margin-top:4px; }
+</style>

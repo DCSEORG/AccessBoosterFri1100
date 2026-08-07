@@ -1,0 +1,208 @@
+/* ─── GitHub-inspired design tokens ─────────────────────────────────────── */
+:root {
+  --color-canvas-default:    #0d1117;
+  --color-canvas-subtle:     #161b22;
+  --color-canvas-inset:      #010409;
+  --color-border-default:    #30363d;
+  --color-border-muted:      #21262d;
+  --color-fg-default:        #e6edf3;
+  --color-fg-muted:          #8b949e;
+  --color-accent-fg:         #58a6ff;
+  --color-accent-emphasis:   #1f6feb;
+  --color-success-fg:        #3fb950;
+  --color-danger-fg:         #f85149;
+  --color-attention-fg:      #d29922;
+  --color-btn-bg:            #21262d;
+  --color-btn-border:        #363b42;
+  --color-btn-hover-bg:      #30363d;
+  --color-btn-primary-bg:    #238636;
+  --color-btn-primary-hover: #2ea043;
+  --color-btn-danger-bg:     #b62324;
+  --color-btn-danger-hover:  #da3633;
+  --radius-sm:               6px;
+  --radius-md:               8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 14px; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: var(--color-canvas-default);
+  color: var(--color-fg-default);
+  line-height: 1.5;
+}
+
+a { color: var(--color-accent-fg); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.gh-header {
+  background: var(--color-canvas-subtle);
+  border-bottom: 1px solid var(--color-border-default);
+  padding: 0 16px;
+}
+.gh-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 48px;
+}
+.gh-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--color-fg-default);
+  font-size: 15px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.gh-brand svg { fill: var(--color-fg-default); }
+.gh-nav { display: flex; gap: 4px; }
+.gh-nav-link {
+  color: var(--color-fg-muted);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: background .15s, color .15s;
+  text-decoration: none;
+}
+.gh-nav-link:hover { background: var(--color-btn-hover-bg); color: var(--color-fg-default); text-decoration: none; }
+.gh-nav-link.active { color: var(--color-fg-default); font-weight: 600; }
+
+/* ─── Main ───────────────────────────────────────────────────────────────── */
+.gh-main { max-width: 1280px; margin: 0 auto; padding: 24px 16px 48px; }
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.gh-footer {
+  text-align: center;
+  padding: 16px;
+  border-top: 1px solid var(--color-border-muted);
+  color: var(--color-fg-muted);
+  font-size: 12px;
+}
+
+/* ─── Page headings ──────────────────────────────────────────────────────── */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border-muted);
+}
+.page-header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-btn-border);
+  background: var(--color-btn-bg);
+  color: var(--color-fg-default);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .15s;
+}
+.btn:hover { background: var(--color-btn-hover-bg); text-decoration: none; color: var(--color-fg-default); }
+.btn-primary {
+  background: var(--color-btn-primary-bg);
+  border-color: rgba(240,246,252,.1);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--color-btn-primary-hover); color: #fff; }
+.btn-danger {
+  background: var(--color-btn-danger-bg);
+  border-color: rgba(240,246,252,.1);
+  color: #fff;
+}
+.btn-danger:hover { background: var(--color-btn-danger-hover); color: #fff; }
+.btn-sm { padding: 3px 8px; font-size: 12px; }
+
+/* ─── Tables ─────────────────────────────────────────────────────────────── */
+.gh-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.gh-table th, .gh-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-muted);
+}
+.gh-table th {
+  background: var(--color-canvas-subtle);
+  color: var(--color-fg-muted);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.gh-table tr:hover td { background: rgba(177,186,196,.04); }
+.gh-table-wrap {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* ─── Forms ──────────────────────────────────────────────────────────────── */
+.gh-form { max-width: 480px; }
+.gh-form-group { margin-bottom: 16px; }
+.gh-form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--color-fg-default);
+}
+.gh-form-group input,
+.gh-form-group select {
+  width: 100%;
+  padding: 5px 12px;
+  font-size: 14px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  background: var(--color-canvas-subtle);
+  color: var(--color-fg-default);
+  outline: none;
+}
+.gh-form-group input:focus,
+.gh-form-group select:focus { border-color: var(--color-accent-fg); box-shadow: 0 0 0 3px rgba(31,111,235,.3); }
+
+/* ─── Alerts ─────────────────────────────────────────────────────────────── */
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  font-size: 14px;
+  border: 1px solid;
+}
+.alert-success { background: rgba(63,185,80,.1); border-color: var(--color-success-fg); color: var(--color-success-fg); }
+.alert-danger   { background: rgba(248,81,73,.1);  border-color: var(--color-danger-fg);  color: var(--color-danger-fg); }
+
+/* ─── Seats badge ────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-green  { background: rgba(63,185,80,.15);  color: var(--color-success-fg); }
+.badge-yellow { background: rgba(210,153,34,.15); color: var(--color-attention-fg); }
+.badge-red    { background: rgba(248,81,73,.15);  color: var(--color-danger-fg); }

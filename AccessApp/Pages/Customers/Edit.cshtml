@@ -1,0 +1,19 @@
+@page "{id:int}"
+@model AccessApp.Pages.Customers.EditModel
+@{
+    ViewData["Title"] = "Edit Customer";
+}
+
+<div class="page-header">
+    <h1>Edit Customer</h1>
+    <a href="/Customers" class="btn">← Back</a>
+</div>
+
+<form method="post" class="gh-form">
+    <input type="hidden" asp-for="CustId" />
+    <div class="gh-form-group">
+        <label asp-for="CustName">Customer Name</label>
+        <input asp-for="CustName" required maxlength="50" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
