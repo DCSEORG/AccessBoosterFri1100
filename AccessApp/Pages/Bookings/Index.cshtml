@@ -1,0 +1,47 @@
+@page
+@model AccessApp.Pages.Bookings.IndexModel
+@{
+    ViewData["Title"] = "Bookings";
+}
+
+<div class="page-header">
+    <h1>Bookings</h1>
+    <a href="/Bookings/Create" class="btn btn-primary">+ Make Booking</a>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.StatusMessage))
+{
+    <div class="alert @(Model.IsSuccess ? "alert-success" : "alert-danger")">@Model.StatusMessage</div>
+}
+
+<div class="gh-table-wrap">
+    <table class="gh-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Film</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Customer</th>
+                <th>Seats</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in Model.Bookings)
+            {
+                <tr>
+                    <td style="color:var(--color-fg-muted)">@b.BookingId</td>
+                    <td>@b.FilmTitle</td>
+                    <td>@b.ShowingDate.ToString("ddd dd MMM yyyy")</td>
+                    <td>@b.ShowingTime.ToString(@"hh\:mm")</td>
+                    <td>@b.CustName</td>
+                    <td>@b.Seats</td>
+                    <td style="text-align:right;">
+                        <a href="/Bookings/Delete/@b.BookingId" class="btn btn-sm btn-danger">Cancel</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

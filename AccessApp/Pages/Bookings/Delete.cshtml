@@ -1,0 +1,24 @@
+@page "{id:int}"
+@model AccessApp.Pages.Bookings.DeleteModel
+@{
+    ViewData["Title"] = "Cancel Booking";
+}
+
+<div class="page-header">
+    <h1>Cancel Booking</h1>
+    <a href="/Bookings" class="btn">← Back</a>
+</div>
+
+<div class="alert alert-danger">
+    Are you sure you want to cancel the booking for <strong>@Model.Booking?.CustName</strong>
+    to see <strong>@Model.Booking?.FilmTitle</strong>
+    on <strong>@Model.Booking?.ShowingDate.ToString("ddd dd MMM yyyy")</strong>
+    at <strong>@Model.Booking?.ShowingTime.ToString(@"hh\:mm")</strong>
+    (@Model.Booking?.Seats seat(s))?
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="BookingId" />
+    <button type="submit" class="btn btn-danger">Yes, Cancel Booking</button>
+    <a href="/Bookings" class="btn">Keep Booking</a>
+</form>

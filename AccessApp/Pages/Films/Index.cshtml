@@ -1,0 +1,35 @@
+@page
+@model AccessApp.Pages.Films.IndexModel
+@{
+    ViewData["Title"] = "Films";
+}
+
+<div class="page-header">
+    <h1>Films</h1>
+    <a href="/Films/Create" class="btn btn-primary">+ Add Film</a>
+</div>
+
+<div class="gh-table-wrap">
+    <table class="gh-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Film Title</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var film in Model.Films)
+            {
+                <tr>
+                    <td style="color:var(--color-fg-muted)">@film.FilmId</td>
+                    <td>@film.FilmTitle</td>
+                    <td style="white-space:nowrap; text-align:right;">
+                        <a href="/Films/Edit/@film.FilmId" class="btn btn-sm">Edit</a>
+                        <a href="/Films/Delete/@film.FilmId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

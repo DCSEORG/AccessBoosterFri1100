@@ -1,0 +1,35 @@
+@page
+@model AccessApp.Pages.Customers.IndexModel
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<div class="page-header">
+    <h1>Customers</h1>
+    <a href="/Customers/Create" class="btn btn-primary">+ Add Customer</a>
+</div>
+
+<div class="gh-table-wrap">
+    <table class="gh-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model.Customers)
+            {
+                <tr>
+                    <td style="color:var(--color-fg-muted)">@c.CustId</td>
+                    <td>@c.CustName</td>
+                    <td style="white-space:nowrap; text-align:right;">
+                        <a href="/Customers/Edit/@c.CustId" class="btn btn-sm">Edit</a>
+                        <a href="/Customers/Delete/@c.CustId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
